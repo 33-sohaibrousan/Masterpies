@@ -50,6 +50,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -169,14 +171,63 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DevicesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Appointment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Device.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PatientReview.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeSlot.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -271,6 +322,16 @@
     <Content Include="lib\tempusdominus\js\tempusdominus-bootstrap-4.min.js" />
     <Content Include="lib\waypoints\links.php" />
     <Content Include="lib\waypoints\waypoints.min.js" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -319,6 +380,14 @@
     <Content Include="img\xray2_files\quicklink.js.download" />
     <Content Include="img\xray2_files\scrollTop.js.download" />
     <Content Include="img\xray2_files\touch-events.js.download" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\asp-net-3.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -330,6 +399,141 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Admin\assets\css\demo.css" />
+    <Content Include="Admin\assets\img\avatars\1.png" />
+    <Content Include="Admin\assets\img\avatars\5.png" />
+    <Content Include="Admin\assets\img\avatars\6.png" />
+    <Content Include="Admin\assets\img\avatars\7.png" />
+    <Content Include="Admin\assets\img\backgrounds\18.jpg" />
+    <Content Include="Admin\assets\img\elements\1.jpg" />
+    <Content Include="Admin\assets\img\elements\11.jpg" />
+    <Content Include="Admin\assets\img\elements\12.jpg" />
+    <Content Include="Admin\assets\img\elements\13.jpg" />
+    <Content Include="Admin\assets\img\elements\17.jpg" />
+    <Content Include="Admin\assets\img\elements\18.jpg" />
+    <Content Include="Admin\assets\img\elements\19.jpg" />
+    <Content Include="Admin\assets\img\elements\2.jpg" />
+    <Content Include="Admin\assets\img\elements\20.jpg" />
+    <Content Include="Admin\assets\img\elements\3.jpg" />
+    <Content Include="Admin\assets\img\elements\4.jpg" />
+    <Content Include="Admin\assets\img\elements\5.jpg" />
+    <Content Include="Admin\assets\img\elements\7.jpg" />
+    <Content Include="Admin\assets\img\favicon\favicon.ico" />
+    <Content Include="Admin\assets\img\icons\brands\asana.png" />
+    <Content Include="Admin\assets\img\icons\brands\behance.png" />
+    <Content Include="Admin\assets\img\icons\brands\dribbble.png" />
+    <Content Include="Admin\assets\img\icons\brands\facebook.png" />
+    <Content Include="Admin\assets\img\icons\brands\github.png" />
+    <Content Include="Admin\assets\img\icons\brands\google.png" />
+    <Content Include="Admin\assets\img\icons\brands\instagram.png" />
+    <Content Include="Admin\assets\img\icons\brands\mailchimp.png" />
+    <Content Include="Admin\assets\img\icons\brands\slack.png" />
+    <Content Include="Admin\assets\img\icons\brands\twitter.png" />
+    <Content Include="Admin\assets\img\icons\unicons\cc-primary.png" />
+    <Content Include="Admin\assets\img\icons\unicons\cc-success.png" />
+    <Content Include="Admin\assets\img\icons\unicons\cc-warning.png" />
+    <Content Include="Admin\assets\img\icons\unicons\chart-success.png" />
+    <Content Include="Admin\assets\img\icons\unicons\chart.png" />
+    <Content Include="Admin\assets\img\icons\unicons\paypal.png" />
+    <Content Include="Admin\assets\img\icons\unicons\wallet-info.png" />
+    <Content Include="Admin\assets\img\icons\unicons\wallet.png" />
+    <Content Include="Admin\assets\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="Admin\assets\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="Admin\assets\img\illustrations\page-misc-error-light.png" />
+    <Content Include="Admin\assets\img\layouts\layout-container-light.png" />
+    <Content Include="Admin\assets\img\layouts\layout-fluid-light.png" />
+    <Content Include="Admin\assets\img\layouts\layout-without-menu-light.png" />
+    <Content Include="Admin\assets\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="Admin\assets\js\config.js" />
+    <Content Include="Admin\assets\js\dashboards-analytics.js" />
+    <Content Include="Admin\assets\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="Admin\assets\js\form-basic-inputs.js" />
+    <Content Include="Admin\assets\js\main.js" />
+    <Content Include="Admin\assets\js\pages-account-settings-account.js" />
+    <Content Include="Admin\assets\js\ui-modals.js" />
+    <Content Include="Admin\assets\js\ui-popover.js" />
+    <Content Include="Admin\assets\js\ui-toasts.js" />
+    <Content Include="Admin\assets\vendor\css\core.css" />
+    <Content Include="Admin\assets\vendor\css\pages\page-account-settings.css" />
+    <Content Include="Admin\assets\vendor\css\pages\page-auth.css" />
+    <Content Include="Admin\assets\vendor\css\pages\page-icons.css" />
+    <Content Include="Admin\assets\vendor\css\pages\page-misc.css" />
+    <Content Include="Admin\assets\vendor\css\theme-default.css" />
+    <Content Include="Admin\assets\vendor\fonts\boxicons.css" />
+    <Content Include="Admin\assets\vendor\fonts\boxicons\boxicons.svg" />
+    <Content Include="Admin\assets\vendor\js\bootstrap.js" />
+    <Content Include="Admin\assets\vendor\js\helpers.js" />
+    <Content Include="Admin\assets\vendor\js\menu.js" />
+    <Content Include="Admin\assets\vendor\libs\apex-charts\apex-charts.css" />
+    <Content Include="Admin\assets\vendor\libs\apex-charts\apexcharts.js" />
+    <Content Include="Admin\assets\vendor\libs\highlight\highlight-github.css" />
+    <Content Include="Admin\assets\vendor\libs\highlight\highlight.css" />
+    <Content Include="Admin\assets\vendor\libs\highlight\highlight.js" />
+    <Content Include="Admin\assets\vendor\libs\jquery\jquery.js" />
+    <Content Include="Admin\assets\vendor\libs\masonry\masonry.js" />
+    <Content Include="Admin\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Admin\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Admin\assets\vendor\libs\popper\popper.js" />
+    <Content Include="Admin\build-config.js" />
+    <Content Include="Admin\documentation.html" />
+    <Content Include="Admin\gulpfile.js" />
+    <Content Include="Admin\html\api.html" />
+    <Content Include="Admin\html\auth-forgot-password-basic.html" />
+    <Content Include="Admin\html\auth-login-basic.html" />
+    <Content Include="Admin\html\auth-register-basic.html" />
+    <Content Include="Admin\html\cards-basic.html" />
+    <Content Include="Admin\html\extended-ui-perfect-scrollbar.html" />
+    <Content Include="Admin\html\extended-ui-text-divider.html" />
+    <Content Include="Admin\html\form-layouts-horizontal.html" />
+    <Content Include="Admin\html\form-layouts-vertical.html" />
+    <Content Include="Admin\html\forms-basic-inputs.html" />
+    <Content Include="Admin\html\forms-input-groups.html" />
+    <Content Include="Admin\html\icons-boxicons.html" />
+    <Content Include="Admin\html\index.html" />
+    <Content Include="Admin\html\layouts-blank.html" />
+    <Content Include="Admin\html\layouts-container.html" />
+    <Content Include="Admin\html\layouts-fluid.html" />
+    <Content Include="Admin\html\layouts-without-menu.html" />
+    <Content Include="Admin\html\layouts-without-navbar.html" />
+    <Content Include="Admin\html\pages-account-settings-account.html" />
+    <Content Include="Admin\html\pages-account-settings-connections.html" />
+    <Content Include="Admin\html\pages-account-settings-notifications.html" />
+    <Content Include="Admin\html\pages-misc-error.html" />
+    <Content Include="Admin\html\pages-misc-under-maintenance.html" />
+    <Content Include="Admin\html\tables-basic.html" />
+    <Content Include="Admin\html\task.html" />
+    <Content Include="Admin\html\ui-accordion.html" />
+    <Content Include="Admin\html\ui-alerts.html" />
+    <Content Include="Admin\html\ui-badges.html" />
+    <Content Include="Admin\html\ui-buttons.html" />
+    <Content Include="Admin\html\ui-carousel.html" />
+    <Content Include="Admin\html\ui-collapse.html" />
+    <Content Include="Admin\html\ui-dropdowns.html" />
+    <Content Include="Admin\html\ui-footer.html" />
+    <Content Include="Admin\html\ui-list-groups.html" />
+    <Content Include="Admin\html\ui-modals.html" />
+    <Content Include="Admin\html\ui-navbar.html" />
+    <Content Include="Admin\html\ui-offcanvas.html" />
+    <Content Include="Admin\html\ui-pagination-breadcrumbs.html" />
+    <Content Include="Admin\html\ui-progress.html" />
+    <Content Include="Admin\html\ui-spinners.html" />
+    <Content Include="Admin\html\ui-tabs-pills.html" />
+    <Content Include="Admin\html\ui-toasts.html" />
+    <Content Include="Admin\html\ui-tooltips-popovers.html" />
+    <Content Include="Admin\html\ui-typography.html" />
+    <Content Include="Admin\index.html" />
+    <Content Include="Admin\js\bootstrap.js" />
+    <Content Include="Admin\js\helpers.js" />
+    <Content Include="Admin\js\menu.js" />
+    <Content Include="Admin\libs\apex-charts\apexcharts.js" />
+    <Content Include="Admin\libs\highlight\highlight.js" />
+    <Content Include="Admin\libs\jquery\jquery.js" />
+    <Content Include="Admin\libs\masonry\masonry.js" />
+    <Content Include="Admin\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Admin\libs\popper\popper.js" />
+    <Content Include="Admin\tasks\build.js" />
+    <Content Include="Admin\tasks\prod.js" />
+    <Content Include="Admin\webpack.config.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -449,6 +653,124 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Home\centers.cshtml" />
     <Content Include="Views\Home\XRay.cshtml" />
+    <Content Include="Views\Shared\_Layoutregester.cshtml" />
+    <Content Include="Admin\.browserslistrc" />
+    <Content Include="Admin\.eslintignore" />
+    <Content Include="Admin\.eslintrc.json" />
+    <Content Include="Admin\.github\workflows\handle-new-issue-comment.yml" />
+    <Content Include="Admin\.github\workflows\handle-new-issue.yml" />
+    <Content Include="Admin\.github\workflows\issue-staler.yml" />
+    <Content Include="Admin\.gitignore" />
+    <Content Include="Admin\.prettierignore" />
+    <Content Include="Admin\.prettierrc.json" />
+    <Content Include="Admin\.vscode\settings.json" />
+    <Content Include="Admin\assets\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="Admin\assets\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="Admin\assets\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="Admin\assets\vendor\fonts\boxicons\boxicons.woff2" />
+    <Content Include="Admin\CHANGELOG.md" />
+    <Content Include="Admin\fonts\boxicons.scss" />
+    <Content Include="Admin\libs\apex-charts\apex-charts.scss" />
+    <Content Include="Admin\libs\highlight\highlight-github.scss" />
+    <Content Include="Admin\libs\highlight\highlight.scss" />
+    <Content Include="Admin\libs\perfect-scrollbar\perfect-scrollbar.scss" />
+    <Content Include="Admin\LICENSE.md" />
+    <Content Include="Admin\package-lock.json" />
+    <Content Include="Admin\package.json" />
+    <Content Include="Admin\README.md" />
+    <Content Include="Admin\scss\core.scss" />
+    <Content Include="Admin\scss\pages\page-account-settings.scss" />
+    <Content Include="Admin\scss\pages\page-auth.scss" />
+    <Content Include="Admin\scss\pages\page-icons.scss" />
+    <Content Include="Admin\scss\pages\page-misc.scss" />
+    <Content Include="Admin\scss\theme-default.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\forms\_floating-labels.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\forms\_form-control.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\forms\_form-range.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\forms\_form-select.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\forms\_input-group.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\forms\_labels.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\forms\_validation.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_alert.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_badge.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_buttons.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_caret.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_dropdown.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_forms.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_list-group.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_misc.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_navs.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_pagination.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_progress.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_table-variants.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\mixins\_toasts.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_accordion.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_alert.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_badge.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_breadcrumb.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_button-group.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_buttons.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_card.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_carousel.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_close.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_dropdown.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_forms.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_functions.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_include.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_list-group.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_mixins.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_modal.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_nav.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_navbar.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_offcanvas.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_pagination.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_popover.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_progress.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_reboot.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_root.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_spinners.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_tables.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_toasts.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_tooltip.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_type.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_utilities-ltr.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_utilities.scss" />
+    <Content Include="Admin\scss\_bootstrap-extended\_variables.scss" />
+    <Content Include="Admin\scss\_bootstrap.scss" />
+    <Content Include="Admin\scss\_colors.scss" />
+    <Content Include="Admin\scss\_components.scss" />
+    <Content Include="Admin\scss\_components\mixins\_app-brand.scss" />
+    <Content Include="Admin\scss\_components\mixins\_avatar.scss" />
+    <Content Include="Admin\scss\_components\mixins\_footer.scss" />
+    <Content Include="Admin\scss\_components\mixins\_menu.scss" />
+    <Content Include="Admin\scss\_components\mixins\_misc.scss" />
+    <Content Include="Admin\scss\_components\mixins\_navbar.scss" />
+    <Content Include="Admin\scss\_components\mixins\_text-divider.scss" />
+    <Content Include="Admin\scss\_components\_app-brand.scss" />
+    <Content Include="Admin\scss\_components\_avatar.scss" />
+    <Content Include="Admin\scss\_components\_base.scss" />
+    <Content Include="Admin\scss\_components\_common.scss" />
+    <Content Include="Admin\scss\_components\_footer.scss" />
+    <Content Include="Admin\scss\_components\_include.scss" />
+    <Content Include="Admin\scss\_components\_layout.scss" />
+    <Content Include="Admin\scss\_components\_menu.scss" />
+    <Content Include="Admin\scss\_components\_mixins.scss" />
+    <Content Include="Admin\scss\_components\_text-divider.scss" />
+    <Content Include="Admin\scss\_components\_variables.scss" />
+    <Content Include="Admin\scss\_custom-variables\_bootstrap-extended.scss" />
+    <Content Include="Admin\scss\_custom-variables\_components.scss" />
+    <Content Include="Admin\scss\_custom-variables\_libs.scss" />
+    <Content Include="Admin\scss\_custom-variables\_pages.scss" />
+    <Content Include="Admin\scss\_custom-variables\_support.scss" />
+    <Content Include="Admin\scss\_theme\_common.scss" />
+    <Content Include="Admin\scss\_theme\_theme.scss" />
+    <Content Include="Admin\yarn.lock" />
+    <Content Include="Views\Devices\Create.cshtml" />
+    <Content Include="Views\Devices\Delete.cshtml" />
+    <Content Include="Views\Devices\Details.cshtml" />
+    <Content Include="Views\Devices\Edit.cshtml" />
+    <Content Include="Views\Devices\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -457,6 +779,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

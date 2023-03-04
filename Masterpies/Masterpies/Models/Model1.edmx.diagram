@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c54580f311b94f60b35395ae23e6200a" Name="Diagram1">
+        <EntityTypeShape EntityType="MasterPieseModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.Appointment" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.AspNetRole" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.AspNetUser" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.Contact" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.Device" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.PatientReview" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.sysdiagram" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterPieseModel.TimeSlot" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="MasterPieseModel.FK__PatientRe__Appoi__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPieseModel.FK_Appointments_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPieseModel.FK_Appointments_Devices" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPieseModel.FK_Appointments_TimeSlots" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPieseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPieseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPieseModel.FK_PatientReviews_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterPieseModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
