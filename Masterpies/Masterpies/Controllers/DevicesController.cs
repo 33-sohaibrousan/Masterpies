@@ -13,14 +13,19 @@ namespace Masterpies.Controllers
 {
     public class DevicesController : Controller
     {
-        private MasterPieseEntities db = new MasterPieseEntities();
+        private MasterPieseEntities2 db = new MasterPieseEntities2();
 
         // GET: Devices
         public ActionResult Index()
         {
             return View(db.Devices.ToList());
         }
-
+        public ActionResult XRay(int? id)
+        {
+            var ray = db.Devices.Where(x => x.DeviceID == id).ToList();
+            return View(ray.ToList());
+        }
+       
         // GET: Devices/Details/5
         public ActionResult Details(int? id)
         {
@@ -47,26 +52,39 @@ namespace Masterpies.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DeviceID,DeviceName,Description,DeviceImage")] Device device , HttpPostedFileBase DeviceImage)
+        public ActionResult Create([Bind(Include = "DeviceID,DeviceName,Description,Devicebackground,singledeviceid,DeviceImg2,DeviceImg3,step1,step2,step3")] Device device, HttpPostedFileBase Devicebackground, HttpPostedFileBase DeviceImg2, HttpPostedFileBase DeviceImg3)
         {
             if (ModelState.IsValid)
             {
-                if (DeviceImage != null)
+
+                if (Devicebackground != null)
                 {
-                    if (!DeviceImage.ContentType.ToLower().StartsWith("image/"))
+                    if (!Devicebackground.ContentType.ToLower().StartsWith("image/"))
                     {
                         ModelState.AddModelError("", "file uploaded is not an image");
-                        return View(DeviceImage);
+                        return View(Devicebackground);
                     }
-                    string folderPath = Server.MapPath("~/Content/Images"); 
+                    string folderPath = Server.MapPath("~/Content/Images");
                     if (!Directory.Exists(folderPath))
                     {
                         Directory.CreateDirectory(folderPath);
                     }
-                    string fileName = Path.GetFileName(DeviceImage.FileName);
+                    string fileName = Path.GetFileName(Devicebackground.FileName);
+                    string fileName2 = Path.GetFileName(DeviceImg2.FileName);
+                    string fileName3 = Path.GetFileName(DeviceImg3.FileName);
+
                     string path = Path.Combine(folderPath, fileName);
-                    DeviceImage.SaveAs(path);
-                    device.DeviceImage = "../Content/Images/" + fileName;
+                    string path2 = Path.Combine(folderPath, fileName2);
+                    string path3 = Path.Combine(folderPath, fileName3);
+
+                    Devicebackground.SaveAs(path);
+                    DeviceImg2.SaveAs(path2);
+                    DeviceImg3.SaveAs(path3);
+                    device.Devicebackground = "../Content/Images/" + fileName;
+                    device.DeviceImg2 = "../Content/Images/" + fileName2;
+                    device.DeviceImg3 = "../Content/Images/" + fileName3;
+
+
                 }
                 else
                 {
@@ -84,12 +102,11 @@ namespace Masterpies.Controllers
         // GET: Devices/Edit/5
         public ActionResult Edit(int? id)
         {
-            Device device = db.Devices.Find(id);
-            Session["img"] = device.DeviceImage;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Device device = db.Devices.Find(id);
             if (device == null)
             {
                 return HttpNotFound();
@@ -102,28 +119,40 @@ namespace Masterpies.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DeviceID,DeviceName,Description,DeviceImage")] Device device , HttpPostedFileBase DeviceImage)
+        public ActionResult Edit([Bind(Include = "DeviceID,DeviceName,Description,Devicebackground,singledeviceid,DeviceImg2,DeviceImg3,step1,step2,step3")] Device device, HttpPostedFileBase Devicebackground, HttpPostedFileBase DeviceImg2, HttpPostedFileBase DeviceImg3)
         {
-            device.DeviceImage = Session["img"].ToString();
+            //device.DeviceImage = Session["img"].ToString();
             if (ModelState.IsValid)
             {
 
-                if (DeviceImage != null)
+                if (Devicebackground != null)
                 {
-                    if (!DeviceImage.ContentType.ToLower().StartsWith("image/"))
+                    if (!Devicebackground.ContentType.ToLower().StartsWith("image/"))
                     {
                         ModelState.AddModelError("", "file uploaded is not an image");
-                        return View(DeviceImage);
+                        return View(Devicebackground);
                     }
                     string folderPath = Server.MapPath("~/Content/Images");
                     if (!Directory.Exists(folderPath))
                     {
                         Directory.CreateDirectory(folderPath);
                     }
-                    string fileName = Path.GetFileName(DeviceImage.FileName);
+                    string fileName = Path.GetFileName(Devicebackground.FileName);
+                    string fileName2 = Path.GetFileName(DeviceImg2.FileName);
+                    string fileName3 = Path.GetFileName(DeviceImg3.FileName);
+
                     string path = Path.Combine(folderPath, fileName);
-                    DeviceImage.SaveAs(path);
-                    device.DeviceImage = "../Content/Images/" + fileName;
+                    string path2 = Path.Combine(folderPath, fileName2);
+                    string path3 = Path.Combine(folderPath, fileName3);
+
+                    Devicebackground.SaveAs(path);
+                    DeviceImg2.SaveAs(path2);
+                    DeviceImg3.SaveAs(path3);
+                    device.Devicebackground = "../Content/Images/" + fileName;
+                    device.DeviceImg2 = "../Content/Images/" + fileName2;
+                    device.DeviceImg3 = "../Content/Images/" + fileName3;
+
+
                 }
                 else
                 {

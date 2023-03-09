@@ -147,14 +147,29 @@ namespace Masterpies.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model,string userName ,int Age)
         {
+            MasterPieseEntities2 db = new MasterPieseEntities2();
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    User user1 = new User();
+                    user1.aspuserid = user.Id;
+                    user1.userName= userName;   
+                    user1.Age= Age;
+                    
+                 db.Users.Add(user1);
+                 db.SaveChanges();
+                    var newuser = await UserManager.FindByNameAsync(model.Email);
+                    if(newuser != null)
+                    {
+                        var role = new AspNetUserRole {UserId = newuser.Id , RoleId = "2" , Email = model.Email };
+                        db.AspNetUserRoles.Add(role);   
+                        db.SaveChanges();
+                    }
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MasterPieseModelStoreContainer" CdmEntityContainer="MasterPieseEntities">
+  <EntityContainerMapping StorageEntityContainer="MasterPieseModelStoreContainer" CdmEntityContainer="MasterPieseEntities2">
     <EntitySetMapping Name="C__MigrationHistory">
       <EntityTypeMapping TypeName="MasterPieseModel.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -23,7 +23,7 @@
           <ScalarProperty Name="TimeSlotID" ColumnName="TimeSlotID" />
           <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
           <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
-          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="aspuserid" ColumnName="aspuserid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -51,6 +51,15 @@
           <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
           <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="MasterPieseModel.AspNetUserRole">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -89,7 +98,12 @@
           <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
           <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="DeviceImage" ColumnName="DeviceImage" />
+          <ScalarProperty Name="Devicebackground" ColumnName="Devicebackground" />
+          <ScalarProperty Name="DeviceImg2" ColumnName="DeviceImg2" />
+          <ScalarProperty Name="DeviceImg3" ColumnName="DeviceImg3" />
+          <ScalarProperty Name="step1" ColumnName="step1" />
+          <ScalarProperty Name="step2" ColumnName="step2" />
+          <ScalarProperty Name="step3" ColumnName="step3" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -126,13 +140,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="AspNetUserRoles" TypeName="MasterPieseModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetRoles">
-        <ScalarProperty Name="Id" ColumnName="RoleId" />
-      </EndProperty>
-      <EndProperty Name="AspNetUsers">
-        <ScalarProperty Name="Id" ColumnName="UserId" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MasterPieseModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="iduser" ColumnName="iduser" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="aspuserid" ColumnName="aspuserid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

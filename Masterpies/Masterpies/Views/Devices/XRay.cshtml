@@ -1,0 +1,388 @@
+﻿@model IEnumerable<Masterpies.Models.Device>
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+@foreach (var item in Model)
+{
+
+
+
+
+    <section class="banner-area other-page" style=" background-image: url(../@item.Devicebackground);">
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>General X-Ray</h1>
+                    <a href="index.html">Home</a> <span style="color:white">|</span> <a href="about.html">General X-Ray</a>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-50 rounded" src="~/@item.DeviceImg3">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="mb-4">
+                        <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">General X-Ray</h5>
+                        <h1 class="display-4">What is a X-Ray Exam?   </h1>
+                    </div>
+                    <p>
+                        X-ray is the most common form of medical imaging. An x-ray image is created when a small amount of radiation passes through the body to reach a digital imaging plate.
+
+                        When x-rays encounter different materials they are slowed or absorbed in varying amounts, creating an image. Dense material such as bone shows up as white while softer tissues show as varying shades of gray.
+
+
+
+                        X-Ray’s are walk-in. No appointment necessary.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!-- About End -->
+
+<div class="container-xxl w-400 flex-grow-1 container-p-y">
+
+    <!-- Accordion -->
+    <div class="row">
+        <div class="col-md mb-4 mb-md-0">
+            <div class="accordion mt-3" id="accordionExample">
+                <div class="card accordion-item active">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button type="button"
+                                class="accordion-button btn btn-primary"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionOne"
+                                aria-expanded="true"
+                                aria-controls="accordionOne">
+                            - What to expect during your exam
+                        </button>
+                    </h2>
+
+                    <div id="accordionOne"
+                         class="accordion-collapse collapse show"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Lemon drops chocolate cake gummies carrot cake chupa chups muffin topping. Sesame snaps icing
+                            marzipan gummi bears macaroon dragée danish caramels powder. Bear claw dragée pastry topping
+                            soufflé. Wafer gummi bears marshmallow pastry pie.
+                        </div>
+                    </div>
+                </div>
+                <div class="card accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button type="button"
+                                class="accordion-button collapsed"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionTwo"
+                                aria-expanded="false"
+                                aria-controls="accordionTwo">
+                            Accordion Item 2
+                        </button>
+                    </h2>
+                    <div id="accordionTwo"
+                         class="accordion-collapse collapse"
+                         aria-labelledby="headingTwo"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Dessert ice cream donut oat cake jelly-o pie sugar plum cheesecake. Bear claw dragée oat cake
+                            dragée ice cream halvah tootsie roll. Danish cake oat cake pie macaroon tart donut gummies.
+                            Jelly beans candy canes carrot cake. Fruitcake chocolate chupa chups.
+                        </div>
+                    </div>
+                </div>
+                <div class="card accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button type="button"
+                                class="accordion-button collapsed"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#accordionThree"
+                                aria-expanded="false"
+                                aria-controls="accordionThree">
+                            Accordion Item 3
+                        </button>
+                    </h2>
+                    <div id="accordionThree"
+                         class="accordion-collapse collapse"
+                         aria-labelledby="headingThree"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Oat cake toffee chocolate bar jujubes. Marshmallow brownie lemon drops cheesecake. Bonbon
+                            gingerbread marshmallow sweet jelly beans muffin. Sweet roll bear claw candy canes oat cake
+                            dragée caramels. Ice cream wafer danish cookie caramels muffin.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ Accordion -->
+@*@Html.Action("_Appointment", "Appointments")*@
+
+<!-- Appointment Start -->
+@{
+    Masterpies.Models.MasterPieseEntities2 db = new Masterpies.Models.MasterPieseEntities2();
+    Masterpies.Models.Appointment appointment = new Masterpies.Models.Appointment();
+    var app = db.Appointments.ToList();
+    ViewBag.aspuserid = new SelectList(db.AspNetUsers, "Id", "Email");
+    ViewBag.DeviceID = new SelectList(db.Devices, "DeviceID", "DeviceName");
+    ViewBag.TimeSlotID = new SelectList(db.TimeSlots, "TimeSlotID", "TimeSlotID");
+
+    <div class="container-fluid bg-primary my-5 py-5">
+        <div class="container py-5">
+            <div class="row gx-5">
+
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="mb-4">
+                        <h5 class="d-inline-block text-white text-uppercase border-bottom border-5">Appointment</h5>
+                        <h1 class="display-4">Make An Appointment For Your Family</h1>
+                    </div>
+                    <p class="text-white mb-5">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus sed et. Takimata takimata sanctus sed.</p>
+                    <a class="btn btn-dark rounded-pill py-3 px-5 me-3" href="">Find Doctor</a>
+                    <a class="btn btn-outline-dark rounded-pill py-3 px-5" href="">Read More</a>
+                </div>
+            
+                    @foreach (var item in Model)
+                    {
+
+
+                        <div class="col-lg-6">
+                            <div class="bg-white text-center rounded p-5">
+                                <h1 class="mb-4">Book An Appointment</h1>
+                                <form>
+                                    <div class="row g-3">
+                                        <div class="col-12 col-sm-6">
+                                            <input type="text" id="FirstName" name="FirstName" placeholder="First Name" class="form-control bg-light border-0" style="height: 55px;" />
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <input type="text" id="LastName" name="LastName" placeholder="Last Name" class="form-control bg-light border-0" style="height: 55px;" />
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <input type="number" id="patientAge" name="patientAge" placeholder="patient Age" class="form-control bg-light border-0" style="height: 55px;" />
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <select class="form-select bg-light border-0" name="patientgender" id="patientgender" style="height: 55px;">
+                                                <option disabled selected>Select Gender</option>
+                                                <option value="True">Male</option>
+                                                <option value="False">Female</option>
+                                            </select>                                   
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <select class="form-select bg-light border-0" name="patientgender" id="patientgender" style="height: 55px;">
+                                                <option disabled selected>Select City</option>
+                                                <option value="Irbid">Irbid</option>
+                                                <option value="Amman">Amman</option>
+                                                <option value="Ajloun">Ajloun</option>
+                                                <option value="Jarash">Jarash</option>
+                                                <option value="Zarqa">Zarqa</option>
+                                                <option value="Madaba">Madaba</option>
+                                                <option value="salt">salt</option>
+                                                <option value="karack">karack</option>
+                                                <option value="Altafileh">Altafileh</option>
+                                                <option value="Ma'an">Ma'an</option>
+                                                <option value="Aqaba">Aqaba</option>
+                                                <option value="Mafraq">Mafraq</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                                @Html.DropDownList("DeviceID", null, htmlAttributes: new { @class = "form-select bg-light border-0", style = "height: 55px;" })
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="date" id="date" data-target-input="nearest">
+                                                <input type="text"
+                                                       class="form-control bg-light border-0 datetimepicker-input"
+                                                       placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="time" id="time" data-target-input="nearest">
+                                                <input type="text"
+                                                       class="form-control bg-light border-0 datetimepicker-input"
+                                                       placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100 py-3" type="submit">Make An Appointment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    
+                }
+            </div>
+        </div>
+    </div>
+        }
+        <!-- Appointment End -->  <!-- Blog Start -->
+        <div class="container-fluid py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                    <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">our centers</h5>
+                    <h1 class="display-4">Radiology centers</h1>
+                </div>
+                <div class="row g-5">
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="bg-light rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="~/img/blog-1.jpg" alt="">
+                            <div class="p-4">
+                                <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo  diam</a>
+                                <p class="m-0">
+                                    Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
+                                    rebum clita rebum dolor stet amet justo
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between border-top p-4">
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-primary py-3 px-5">Go To center</button>
+
+                                </div>
+                                <div class="d-flex align-items-center">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="bg-light rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="~/img/blog-2.jpg" alt="">
+                            <div class="p-4">
+                                <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo  diam</a>
+                                <p class="m-0">
+                                    Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
+                                    rebum clita rebum dolor stet amet justo
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between border-top p-4">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
+                                    <small>John Doe</small>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
+                                    <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="bg-light rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="~/img/blog-3.jpg" alt="">
+                            <div class="p-4">
+                                <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo  diam</a>
+                                <p class="m-0">
+                                    Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
+                                    rebum clita rebum dolor stet amet justo
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between border-top p-4">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
+                                    <small>John Doe</small>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
+                                    <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="bg-light rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="~/img/blog-2.jpg" alt="">
+                            <div class="p-4">
+                                <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo  diam</a>
+                                <p class="m-0">
+                                    Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
+                                    rebum clita rebum dolor stet amet justo
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between border-top p-4">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
+                                    <small>John Doe</small>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
+                                    <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="bg-light rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="~/img/blog-3.jpg" alt="">
+                            <div class="p-4">
+                                <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo  diam</a>
+                                <p class="m-0">
+                                    Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
+                                    rebum clita rebum dolor stet amet justo
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between border-top p-4">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
+                                    <small>John Doe</small>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
+                                    <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="bg-light rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="~/img/blog-1.jpg" alt="">
+                            <div class="p-4">
+                                <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo  diam</a>
+                                <p class="m-0">
+                                    Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
+                                    rebum clita rebum dolor stet amet justo
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between border-top p-4">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
+                                    <small>John Doe</small>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
+                                    <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button class="btn btn-primary py-3 px-5">Load More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Blog End -->

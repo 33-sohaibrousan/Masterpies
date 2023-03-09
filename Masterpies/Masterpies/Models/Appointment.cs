@@ -29,7 +29,7 @@ namespace Masterpies.Models
         public int TimeSlotID { get; set; }
         public int DeviceID { get; set; }
         public Nullable<System.DateTime> AppointmentDate { get; set; }
-        public string Userid { get; set; }
+        public string aspuserid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PatientReview> PatientReviews { get; set; }

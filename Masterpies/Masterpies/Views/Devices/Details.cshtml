@@ -27,11 +27,58 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DeviceImage)
+            @Html.DisplayNameFor(model => model.Devicebackground)
         </dt>
 
         <dd>
-            <img src="~/Content/@Model.DeviceImage" width="150px" height="100px" />
+            @*@Html.DisplayFor(model => model.Devicebackground)*@
+            <img src="~/Content/@Model.Devicebackground" width="100px" height="100px" />
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceImg2)
+
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.DeviceImg2)*@
+            <img src="~/Content/@Model.DeviceImg2" width="100px" height="100px" />
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceImg3)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.DeviceImg3)*@
+            <img src="~/Content/@Model.DeviceImg3" width="100px" height="100px" />
+
+        </dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.step1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.step1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.step2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.step2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.step3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.step3)
         </dd>
 
     </dl>

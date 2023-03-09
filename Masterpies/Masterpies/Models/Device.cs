@@ -23,7 +23,12 @@ namespace Masterpies.Models
         public int DeviceID { get; set; }
         public string DeviceName { get; set; }
         public string Description { get; set; }
-        public string DeviceImage { get; set; }
+        public string Devicebackground { get; set; }
+        public string DeviceImg2 { get; set; }
+        public string DeviceImg3 { get; set; }
+        public string step1 { get; set; }
+        public string step2 { get; set; }
+        public string step3 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }

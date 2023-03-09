@@ -13,10 +13,10 @@ namespace Masterpies.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MasterPieseEntities : DbContext
+    public partial class MasterPieseEntities2 : DbContext
     {
-        public MasterPieseEntities()
-            : base("name=MasterPieseEntities")
+        public MasterPieseEntities2()
+            : base("name=MasterPieseEntities2")
         {
         }
     
@@ -30,11 +30,13 @@ namespace Masterpies.Models
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Device> Devices { get; set; }
         public virtual DbSet<PatientReview> PatientReviews { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TimeSlot> TimeSlots { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

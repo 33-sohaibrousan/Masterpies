@@ -10,6 +10,7 @@ namespace Masterpies.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -30,10 +31,6 @@ namespace Masterpies.Controllers
         {
             return View();
         }
-        public ActionResult XRay()
-        {
-            return View();
-        }
-
+       
     }
 }

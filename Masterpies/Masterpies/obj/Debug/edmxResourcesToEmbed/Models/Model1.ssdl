@@ -23,7 +23,7 @@
     <Property Name="TimeSlotID" Type="int" Nullable="false" />
     <Property Name="DeviceID" Type="int" Nullable="false" />
     <Property Name="AppointmentDate" Type="datetime" />
-    <Property Name="Userid" Type="nvarchar" MaxLength="128" />
+    <Property Name="aspuserid" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <EntityType Name="AspNetRoles">
     <Key>
@@ -58,6 +58,7 @@
     </Key>
     <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="AspNetUsers">
     <Key>
@@ -93,7 +94,12 @@
     <Property Name="DeviceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DeviceName" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Description" Type="varchar(max)" />
-    <Property Name="DeviceImage" Type="varchar" MaxLength="255" />
+    <Property Name="Devicebackground" Type="varchar" MaxLength="255" />
+    <Property Name="DeviceImg2" Type="varchar" MaxLength="255" />
+    <Property Name="DeviceImg3" Type="varchar" MaxLength="255" />
+    <Property Name="step1" Type="varchar(max)" />
+    <Property Name="step2" Type="varchar(max)" />
+    <Property Name="step3" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="PatientReviews">
     <Key>
@@ -125,6 +131,16 @@
     <Property Name="EndTime" Type="datetime" />
     <Property Name="Date" Type="date" />
   </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="iduser" />
+    </Key>
+    <Property Name="iduser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Gender" Type="bit" />
+    <Property Name="aspuserid" Type="nvarchar" MaxLength="128" />
+  </EntityType>
   <Association Name="FK__PatientRe__Appoi__68487DD7">
     <End Role="Appointments" Type="Self.Appointments" Multiplicity="0..1" />
     <End Role="PatientReviews" Type="Self.PatientReviews" Multiplicity="*" />
@@ -145,7 +161,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Appointments">
-        <PropertyRef Name="Userid" />
+        <PropertyRef Name="aspuserid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -241,6 +257,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Users_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="aspuserid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="MasterPieseModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
@@ -254,6 +282,7 @@
     <EntitySet Name="PatientReviews" EntityType="Self.PatientReviews" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimeSlots" EntityType="Self.TimeSlots" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__PatientRe__Appoi__68487DD7" Association="Self.FK__PatientRe__Appoi__68487DD7">
       <End Role="Appointments" EntitySet="Appointments" />
       <End Role="PatientReviews" EntitySet="PatientReviews" />
@@ -289,6 +318,10 @@
     <AssociationSet Name="FK_PatientReviews_AspNetUsers" Association="Self.FK_PatientReviews_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="PatientReviews" EntitySet="PatientReviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_AspNetUsers" Association="Self.FK_Users_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Users" EntitySet="Users" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -33,11 +33,53 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DeviceImage, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Devicebackground, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DeviceImage, new { type = "file", accept = "image/*", @class = "form-control", id = "DeviceImage" })
-                @*@Html.EditorFor(model => model.DeviceImage, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.ValidationMessageFor(model => model.DeviceImage, "", new { @class = "text-danger" })
+                <input accept="image/*" class="form-control" id="Devicebackground" name="Devicebackground" type="file">
+                @*@Html.TextBoxFor(model => model.Devicebackground, new { type = "file", accept = "image/*", @class = "form-control", id = "Devicebackground" })*@
+                @Html.ValidationMessageFor(model => model.Devicebackground, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeviceImg2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input accept="image/*" class="form-control" id="DeviceImg2" name="DeviceImg2" type="file">
+                @*@Html.TextBoxFor(model => model.DeviceImg2, new { type = "file", accept = "image/*", @class = "form-control", id = "DeviceImg2" })*@
+                @Html.ValidationMessageFor(model => model.DeviceImg2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeviceImg3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input accept="image/*" class="form-control" id="DeviceImg3" name="DeviceImg3" type="file">
+                @*@Html.TextBoxFor(model => model.DeviceImg3, new { type = "file", accept = "image/*", @class = "form-control", id = "DeviceImg3" })*@
+                @Html.ValidationMessageFor(model => model.DeviceImg3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.step1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.step1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.step1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.step2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.step2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.step2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.step3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.step3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.step3, "", new { @class = "text-danger" })
             </div>
         </div>
 

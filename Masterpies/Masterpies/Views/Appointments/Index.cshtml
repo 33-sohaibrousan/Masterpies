@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Masterpies.Models.Appointment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.patientAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.patientgender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Device.DeviceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeSlot.TimeSlotID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.patientAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.patientgender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppointmentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Device.DeviceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeSlot.TimeSlotID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AppointmentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AppointmentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AppointmentID })
+        </td>
+    </tr>
+}
+
+</table>
